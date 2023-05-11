@@ -16,6 +16,15 @@ fi
 alias conf="/usr/bin/git --git-dir $HOME/$DOTFILES_GIT_DIR/ --work-tree $HOME"
 alias ls="exa"
 
+# markdown server
+alias md="markserv"
+
+# kubectl
+alias k="kubectl"
+alias ka="k apply"
+alias kl="k log"
+alias kf="sudo kubefwd"
+
 
 #
 # VI KEYMAPPING
