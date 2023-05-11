@@ -29,3 +29,6 @@
 	path = modules/prompt/external/powerlevel10k
 	url = https://github.com/romkatv/powerlevel10k.git
 	shallow = true
+[submodule "pmodules/zsh-z"]
+	path = pmodules/zsh-z
+	url = https://github.com/agkozak/zsh-z.git
