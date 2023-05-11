@@ -9,3 +9,58 @@
 if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprofile"
 fi
+
+# Custom envs
+
+# cargo env
+source "$HOME/.cargo/env"
+
+# set dotfiles config
+export DOTFILES_GIT_DIR=".git.dotfiles"
+
+export PATH="$PATH:/opt/homebrew/bin:/usr/local/opt/fzf/bin:/Users/jacklee/.fzf/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+
+#
+# rust
+#
+source "$HOME/.cargo/env"
+
+#
+# Scala
+#
+# >>> coursier install directory >>>
+export PATH="$PATH:/Users/jacklee/Library/Application Support/Coursier/bin"
+# <<< coursier install directory <<<
+
+#
+# ruby
+#
+# chruby
+source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
+
+# To enable auto-switching of Rubies specified by .ruby-version files,
+# add the following to ~/.bash_profile or ~/.zshrc:
+source /opt/homebrew/opt/chruby/share/chruby/auto.sh
+
+
+#
+# Gcloud
+#
+export PATH="$PATH:$HOME/google-cloud-sdk/bin"
+
+#
+# Krew (kubernetes plugin manager)
+#
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+#
+# fnm
+#
+# export PATH="/Users/jacklee/Library/Application Support/fnm:$PATH"
+# eval "`fnm env`"
+
+#
+# Helix
+#
+export HELIX_RUNTIME="$HOME/codes/projects/helix/runtime"
+

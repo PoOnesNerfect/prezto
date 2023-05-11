@@ -114,11 +114,11 @@ function prompt_cloud_setup {
   zstyle ':prezto:module:git:info:branch' format "%%B%F{$secondary_color}[%f%%b%%B%F{$primary_color}%b%f%%b"
   zstyle ':prezto:module:git:info:keys' format \
     'prompt' '%b%C%D' \
-    'rprompt' ''
+    'rprompt' '[%R]'
 
   # Define prompts.
   PROMPT='%B%F{$primary_color}${prefix}%f%b  %B%F{$secondary_color}%c%f%b ${git_info:+${(e)git_info[prompt]}} '
-  RPROMPT=''
+  RPROMPT='${git_info:+${(e)git_info[rprompt]}}'
 }
 
 prompt_cloud_setup "$@"
