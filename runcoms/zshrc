@@ -16,8 +16,16 @@ fi
 alias conf="/usr/bin/git --git-dir $HOME/$DOTFILES_GIT_DIR/ --work-tree $HOME"
 alias ls="exa"
 
+# rust
+alias cb="cargo build"
+alias cr="cargo run"
+alias ct="cargo test"
+
 # markdown server
 alias md="markserv"
+
+# docker
+alias lzd="lazydocker"
 
 # kubectl
 alias k="kubectl"
@@ -63,3 +71,8 @@ eval "`fnm env`"
 # direv
 #
 eval "$(direnv hook zsh)"
+
+#
+# fnm
+#
+eval "$(fnm env --use-on-cd)"
