@@ -76,3 +76,9 @@ eval "$(direnv hook zsh)"
 # fnm
 #
 eval "$(fnm env --use-on-cd)"
+
+#
+# DOCKER FIX (https://stackoverflow.com/questions/44084846/cannot-connect-to-the-docker-daemon-on-macos/74148162#74148162)
+#
+# perma solution: sudo ln -s ~/Library/Containers/com.docker.docker/Data/docker.raw.sock /var/run/docker.sock
+export DOCKER_HOST=unix:///Users/$(whoami)/Library/Containers/com.docker.docker/Data/docker.raw.sock
