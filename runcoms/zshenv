@@ -10,7 +10,12 @@ if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; t
   source "${ZDOTDIR:-$HOME}/.zprofile"
 fi
 
+#
 # Custom envs
+#
+
+# custom bin dir
+export PATH="$PATH:$HOME/.config/bin"
 
 # cargo env
 source "$HOME/.cargo/env"
