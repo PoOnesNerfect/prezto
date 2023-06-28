@@ -46,7 +46,7 @@ bindkey -M vicmd "U" redo
 bindkey -M viins "$key_info[Control]z" undo
 bindkey -M viins "$key_info[Control]Z" redo
 
-bindkey -M vicmd "E" beginning-of-line
+bindkey -M vicmd "b" beginning-of-line
 bindkey -M vicmd "e" end-of-line
 bindkey -M vicmd "L" vi-forward-word
 bindkey -M vicmd "H" vi-backward-word
