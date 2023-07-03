@@ -21,6 +21,10 @@ alias cb="cargo build"
 alias cr="cargo run"
 alias ct="cargo test"
 
+# sea-orm-cli
+alias entity="sea-orm-cli generate entity"
+alias migrate="sea-orm-cli migrate generate"
+
 # markdown server
 alias md="markserv"
 
