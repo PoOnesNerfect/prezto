@@ -36,6 +36,8 @@ alias k="kubectl"
 alias ka="k apply"
 alias kl="k log"
 alias kf="sudo kubefwd"
+alias kc="kubectx"
+alias kn="kubens"
 
 
 #
