@@ -39,6 +39,9 @@ alias kf="sudo kubefwd"
 alias kc="kubectx"
 alias kn="kubens"
 
+# git
+alias git-remove-all-tags="zsh -c 'git tag -d \$(git tag -l) && git fetch && git push origin --delete \$(git tag -l) && git tag -d \$(git tag -l)'"
+
 
 #
 # VI KEYMAPPING
@@ -114,3 +117,6 @@ function docker-clean {
   docker volume rm $(docker volume ls |awk '{print $2}')
   rm -rf ~/Library/Containers/com.docker.docker/Data/*
 }
+
+# opam configuration
+[[ ! -r /Users/jacklee/.opam/opam-init/init.zsh ]] || source /Users/jacklee/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
