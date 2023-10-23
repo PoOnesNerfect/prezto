@@ -41,6 +41,7 @@ alias kn="kubens"
 
 # helmfile
 alias hf="helmfile"
+alias hfa="helmfile apply -f helmfile.yaml"
 
 # set kube context from env
 # autoload -U add-zsh-hook
