@@ -39,6 +39,9 @@ alias kf="sudo kubefwd"
 alias kc="kubectx"
 alias kn="kubens"
 
+# helmfile
+alias hf="helmfile"
+
 # set kube context from env
 # autoload -U add-zsh-hook
 set_k_ctx() {
