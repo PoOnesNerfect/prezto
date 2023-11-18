@@ -64,6 +64,27 @@ set_k_ctx() {
 }
 add-zsh-hook chpwd set_k_ctx
 
+# set gcloud config from env
+# autoload -U add-zsh-hook
+set_gcloud_config() {
+  if [ -n "$CURRENT_GCLOUD_CONFIG" ]; then
+    if [ -n "$GCLOUD_CONFIG" ]; then
+      if [ "$CURRENT_GCLOUD_CONFIG" != "$GCLOUD_CONFIG" ]; then
+        gcloud config configurations activate $GCLOUD_CONFIG
+        export CURRENT_GCLOUD_CONFIG=$GCLOUD_CONFIG
+      fi
+    else
+      unset CURRENT_GCLOUD_CONFIG
+    fi
+  else
+    if [ -n "$GCLOUD_CONFIG" ]; then
+      gcloud config configurations activate $GCLOUD_CONFIG
+      export CURRENT_GCLOUD_CONFIG=$GCLOUD_CONFIG
+    fi
+  fi
+}
+add-zsh-hook chpwd set_gcloud_config
+
 # git
 alias git-remove-all-tags="zsh -c 'git tag -d \$(git tag -l) && git fetch && git push origin --delete \$(git tag -l) && git tag -d \$(git tag -l)'"
 
@@ -80,10 +101,10 @@ bindkey -M vicmd "U" redo
 bindkey -M viins "$key_info[Control]z" undo
 bindkey -M viins "$key_info[Control]Z" redo
 
-bindkey -M vicmd "b" beginning-of-line
-bindkey -M vicmd "e" end-of-line
-bindkey -M vicmd "L" vi-forward-word
-bindkey -M vicmd "H" vi-backward-word
+bindkey -M vicmd "B" beginning-of-line
+bindkey -M vicmd "E" end-of-line
+bindkey -M vicmd "e" vi-forward-word
+bindkey -M vicmd "b" vi-backward-word
 
 bindkey -M viins "$key_info[Control]w" backward-kill-word
 bindkey -M vicmd "$key_info[Control]w" backward-kill-word
