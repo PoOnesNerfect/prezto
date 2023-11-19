@@ -43,27 +43,6 @@ alias kn="kubens"
 alias hf="helmfile"
 alias hfa="helmfile apply -f helmfile.yaml"
 
-# set kube context from env
-# autoload -U add-zsh-hook
-set_k_ctx() {
-  if [ -n "$CURRENT_KUBECTL_CONTEXT" ]; then
-    if [ -n "$KUBECTL_CONTEXT" ]; then
-      if [ "$CURRENT_KUBECTL_CONTEXT" != "$KUBECTL_CONTEXT" ]; then
-        kubectl config use-context $KUBECTL_CONTEXT
-        export CURRENT_KUBECTL_CONTEXT=$KUBECTL_CONTEXT
-      fi
-    else
-      unset CURRENT_KUBECTL_CONTEXT
-    fi
-  else
-    if [ -n "$KUBECTL_CONTEXT" ]; then
-      kubectl config use-context $KUBECTL_CONTEXT
-      export CURRENT_KUBECTL_CONTEXT=$KUBECTL_CONTEXT
-    fi
-  fi
-}
-add-zsh-hook chpwd set_k_ctx
-
 # set gcloud config from env
 # autoload -U add-zsh-hook
 set_gcloud_config() {
@@ -84,6 +63,27 @@ set_gcloud_config() {
   fi
 }
 add-zsh-hook chpwd set_gcloud_config
+
+# set kube context from env
+# autoload -U add-zsh-hook
+set_k_ctx() {
+  if [ -n "$CURRENT_KUBECTL_CONTEXT" ]; then
+    if [ -n "$KUBECTL_CONTEXT" ]; then
+      if [ "$CURRENT_KUBECTL_CONTEXT" != "$KUBECTL_CONTEXT" ]; then
+        kubectl config use-context $KUBECTL_CONTEXT
+        export CURRENT_KUBECTL_CONTEXT=$KUBECTL_CONTEXT
+      fi
+    else
+      unset CURRENT_KUBECTL_CONTEXT
+    fi
+  else
+    if [ -n "$KUBECTL_CONTEXT" ]; then
+      kubectl config use-context $KUBECTL_CONTEXT
+      export CURRENT_KUBECTL_CONTEXT=$KUBECTL_CONTEXT
+    fi
+  fi
+}
+add-zsh-hook chpwd set_k_ctx
 
 # git
 alias git-remove-all-tags="zsh -c 'git tag -d \$(git tag -l) && git fetch && git push origin --delete \$(git tag -l) && git tag -d \$(git tag -l)'"
