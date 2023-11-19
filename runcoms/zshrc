@@ -34,6 +34,7 @@ alias lzd="lazydocker"
 # kubectl
 alias k="kubectl"
 alias ka="k apply"
+alias kak="k apply -k ."
 alias kl="k log"
 alias kf="sudo kubefwd"
 alias kc="kubectx"
