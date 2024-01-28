@@ -175,3 +175,10 @@ function docker-clean {
 
 # opam configuration
 [[ ! -r /Users/jacklee/.opam/opam-init/init.zsh ]] || source /Users/jacklee/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+
+#
+# bun
+#
+export PATH="/Users/jacklee/.bun/bin:$PATH"
+# bun completions
+[ -s "/Users/jacklee/.bun/_bun" ] && source "/Users/jacklee/.bun/_bun"
