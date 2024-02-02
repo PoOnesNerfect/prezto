@@ -1,0 +1,12 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/ingydotnet/git-subrepo#readme
+;
+[subrepo]
+	remote = https://github.com/PoOnesNerfect/zsh-z.git
+	branch = master
+	commit = afaf2965b41fdc6ca66066e09382726aa0b6aa04
+	parent = 29bb9629e6e6c328815800493edd2f413628ee5e
+	method = merge
+	cmdver = 0.4.6
