@@ -45,6 +45,14 @@ alias kn="kubens"
 alias hf="helmfile"
 alias hfa="helmfile apply -f helmfile.yaml"
 
+## jl my cli
+alias jl="jlf"
+
+## date aliases
+alias ymd="date '+%Y-%m-%d'"
+alias ymdhms="date '+%Y-%m-%d %H:%M:%S'"
+alias mdy="date '+%D'"
+
 # set gcloud config from env
 # autoload -U add-zsh-hook
 set_gcloud_config() {
