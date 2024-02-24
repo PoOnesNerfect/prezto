@@ -13,99 +13,13 @@ fi
 # Customize to your needs...
 
 # aliases
-alias ls="exa"
-alias lt="exa -ah --tree --level=2"
-alias lta="exa -ah --tree"
+source ~/.zsh_aliases
 
-# rust
-alias cb="cargo build"
-alias cr="cargo run"
-alias ct="cargo test"
-
-# sea-orm-cli
-alias entity="sea-orm-cli generate entity"
-alias migrate="sea-orm-cli migrate generate"
-
-# markdown server
-alias md="markserv"
-
-# docker
-alias lzd="lazydocker"
-
-# kubectl
-alias k="kubectl"
-alias ka="k apply"
-alias kak="k apply -k ."
-alias kl="k log"
-alias kf="sudo kubefwd"
-alias kc="kubectx"
-alias kn="kubens"
-
-# helmfile
-alias hf="helmfile"
-alias hfa="helmfile apply -f helmfile.yaml"
-
-## jl my cli
-alias jl="jlf"
-
-## date aliases
-alias ymd="date '+%Y-%m-%d'"
-alias ymdhms="date '+%Y-%m-%d %H:%M:%S'"
-alias mdy="date '+%D'"
-
-# set gcloud config from env
-# autoload -U add-zsh-hook
-set_gcloud_config() {
-  if [ -n "$CURRENT_GCLOUD_CONFIG" ]; then
-    if [ -n "$GCLOUD_CONFIG" ]; then
-      if [ "$CURRENT_GCLOUD_CONFIG" != "$GCLOUD_CONFIG" ]; then
-        gcloud config configurations activate $GCLOUD_CONFIG
-        export CURRENT_GCLOUD_CONFIG=$GCLOUD_CONFIG
-      fi
-    else
-      unset CURRENT_GCLOUD_CONFIG
-    fi
-  else
-    if [ -n "$GCLOUD_CONFIG" ]; then
-      gcloud config configurations activate $GCLOUD_CONFIG
-      export CURRENT_GCLOUD_CONFIG=$GCLOUD_CONFIG
-    fi
-  fi
-}
-add-zsh-hook chpwd set_gcloud_config
-
-# set kube context from env
-# autoload -U add-zsh-hook
-set_k_ctx() {
-  if [ -n "$CURRENT_KUBECTL_CONTEXT" ]; then
-    if [ -n "$KUBECTL_CONTEXT" ]; then
-      if [ "$CURRENT_KUBECTL_CONTEXT" != "$KUBECTL_CONTEXT" ]; then
-        kubectl config use-context $KUBECTL_CONTEXT
-        export CURRENT_KUBECTL_CONTEXT=$KUBECTL_CONTEXT
-      fi
-    else
-      unset CURRENT_KUBECTL_CONTEXT
-    fi
-  else
-    if [ -n "$KUBECTL_CONTEXT" ]; then
-      kubectl config use-context $KUBECTL_CONTEXT
-      export CURRENT_KUBECTL_CONTEXT=$KUBECTL_CONTEXT
-    fi
-  fi
-}
-add-zsh-hook chpwd set_k_ctx
+# functions
+source ~/.zsh_functions
 
 # git
 alias git-remove-all-tags="zsh -c 'git tag -d \$(git tag -l) && git fetch && git push origin --delete \$(git tag -l) && git tag -d \$(git tag -l)'"
-
-# replace all in files
-function replace_all_in_files() {
-  echo "find . -name '*.$1' -exec sed -i -e 's/$2/$3/g' {} \;"
-  sh -c "find . -name '*.$1' -exec sed -i -e 's/$2/$3/g' {} \;"
-}
-autoload -Uz replace_all_in_files
-alias raf="replace_all_in_files"
-
 
 #
 # VI KEYMAPPING
@@ -171,16 +85,6 @@ export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
 export LDFLAGS="-L/opt/homebrew/opt/postgresql@15/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/postgresql@15/include"
 export PKG_CONFIG_PATH="/opt/homebrew/opt/postgresql@15/lib/pkgconfig"
-
-#
-# Docker clean
-#
-function docker-clean {
-  docker rm $(docker ps -a -q)
-  docker rmi $(docker images -q)
-  docker volume rm $(docker volume ls |awk '{print $2}')
-  rm -rf ~/Library/Containers/com.docker.docker/Data/*
-}
 
 # opam configuration
 [[ ! -r /Users/jacklee/.opam/opam-init/init.zsh ]] || source /Users/jacklee/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
