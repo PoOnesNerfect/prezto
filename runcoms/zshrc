@@ -17,6 +17,7 @@ source ~/.zsh_aliases
 
 # functions
 source ~/.zsh_functions
+fpath=(~/.config/zsh/functions $fpath)
 
 # git
 alias git-remove-all-tags="zsh -c 'git tag -d \$(git tag -l) && git fetch && git push origin --delete \$(git tag -l) && git tag -d \$(git tag -l)'"
@@ -95,3 +96,4 @@ export PKG_CONFIG_PATH="/opt/homebrew/opt/postgresql@15/lib/pkgconfig"
 export PATH="/Users/jacklee/.bun/bin:$PATH"
 # bun completions
 [ -s "/Users/jacklee/.bun/_bun" ] && source "/Users/jacklee/.bun/_bun"
+fpath+=${ZDOTDIR:-~}/.zsh_functions
