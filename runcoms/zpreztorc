@@ -44,7 +44,8 @@ zstyle ':prezto:load' pmodule \
   'history-substring-search' \
   'autosuggestions' \
   'prompt' \
-  'zsh-z'
+  'zsh-z' \
+  'fzf-tab'
 
 #
 # Autosuggestions
@@ -270,3 +271,21 @@ zstyle ':prezto:module:syntax-highlighting' pattern \
 # before deleting or overwriting files. Set to 'no' to disable this safer
 # behavior.
 # zstyle ':prezto:module:utility' safe-ops 'yes'
+
+#
+# fzf-tab
+#
+# disable sort when completing `git checkout`
+zstyle ':completion:*:git-checkout:*' sort false
+# set descriptions format to enable group support
+# NOTE: don't use escape sequences here, fzf-tab will ignore them
+zstyle ':completion:*:descriptions' format '[%d]'
+# set list-colors to enable filename colorizing
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+# force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
+zstyle ':completion:*' menu no
+# preview directory's content with exa when completing cd
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -a -1 --color=always $realpath'
+zstyle ':fzf-tab:complete:bat:*' fzf-preview 'if [[ -d $realpath ]]; then exa -a -1 --color=always $realpath; else bat --style=numbers --color=always --line-range :500 $realpath; fi'
+# switch group using `<` and `>`
+zstyle ':fzf-tab:*' switch-group '<' '>'

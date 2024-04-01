@@ -12,13 +12,17 @@ fi
 
 # Customize to your needs...
 
+# this matches files that start with a dot when you type cd and hit tab
+_comp_options+=(globdots)
+
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# # auto-completion
-# autoload -Uz compinit
-# compinit
-# _comp_options+=(globdots)
+export FZF_DEFAULT_COMMAND='find . \! \( -type d -path ./.git -prune \) \! -type d \! -name '\''*.tags'\'' -printf '\''%P\n'\'
+export FZF_COMPLETION_TRIGGER=''
+bindkey '^A' fzf-completion
+bindkey '^I' $fzf_default_completion
+# Using highlight (http://www.andre-simon.de/doku/highlight/en/highlight.html)
+export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
 
 # aliases
 source ~/.zsh_aliases
@@ -86,6 +90,12 @@ export DOCKER_HOST=unix:///Users/$(whoami)/Library/Containers/com.docker.docker/
 # gcloud
 #
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+
+#
+# kubectl
+#
+# [Install and Set Up kubectl on macOS | Kubernetes](https://kubernetes.io/docs/tasks/tools/install-kubectl-macos/#enable-shell-autocompletion)
+source <(kubectl completion zsh)
 
 #
 # postgresql@15
