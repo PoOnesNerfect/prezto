@@ -12,6 +12,14 @@ fi
 
 # Customize to your needs...
 
+# fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# # auto-completion
+# autoload -Uz compinit
+# compinit
+# _comp_options+=(globdots)
+
 # aliases
 source ~/.zsh_aliases
 
@@ -93,7 +101,13 @@ export PKG_CONFIG_PATH="/opt/homebrew/opt/postgresql@15/lib/pkgconfig"
 #
 # bun
 #
-export PATH="/Users/jacklee/.bun/bin:$PATH"
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
 # bun completions
 [ -s "/Users/jacklee/.bun/_bun" ] && source "/Users/jacklee/.bun/_bun"
 fpath+=${ZDOTDIR:-~}/.zsh_functions
+
+# Wasmer
+export WASMER_DIR="/Users/jacklee/.wasmer"
+[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
