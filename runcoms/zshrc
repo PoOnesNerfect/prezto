@@ -15,7 +15,9 @@ fi
 # this matches files that start with a dot when you type cd and hit tab
 _comp_options+=(globdots)
 
+#
 # fzf
+#
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='find . \! \( -type d -path ./.git -prune \) \! -type d \! -name '\''*.tags'\'' -printf '\''%P\n'\'
 export FZF_COMPLETION_TRIGGER='**'
