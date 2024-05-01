@@ -17,11 +17,12 @@ fi
 # custom bin dir
 export PATH="$PATH:$HOME/.config/bin"
 
+# custom shell commands
+chmod +x ~/.config/zsh/bin/*
+export PATH="/Users/jacklee/.config/zsh/bin:$PATH"
+
 # cargo env
 source "$HOME/.cargo/env"
-
-# set dotfiles config
-export DOTFILES_GIT_DIR=".git.dotfiles"
 
 export PATH="$PATH:/opt/homebrew/bin:/usr/local/opt/fzf/bin:/Users/jacklee/.fzf/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
