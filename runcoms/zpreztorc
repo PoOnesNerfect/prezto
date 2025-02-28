@@ -45,7 +45,8 @@ zstyle ':prezto:load' pmodule \
   'autosuggestions' \
   'prompt' \
   'zsh-z' \
-  'fzf-tab'
+  'fzf-tab' \
+  'homebrew'
 
 #
 # Autosuggestions

@@ -21,15 +21,12 @@ export PATH="$PATH:$HOME/.config/bin:$HOME/.config/yabai/bin"
 chmod +x ~/.config/zsh/bin/*
 export PATH="/Users/jacklee/.config/zsh/bin:$PATH"
 
-# cargo env
-source "$HOME/.cargo/env"
-
-export PATH="$PATH:/opt/homebrew/bin:/usr/local/opt/fzf/bin:/Users/jacklee/.fzf/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
-
 #
 # rust
 #
 source "$HOME/.cargo/env"
+
+export PATH="$PATH:/opt/homebrew/bin:/usr/local/opt/fzf/bin:/Users/jacklee/.fzf/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
 #
 # Scala

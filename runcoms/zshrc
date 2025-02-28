@@ -44,10 +44,22 @@ export FZF_DEFAULT_OPTS="
 --bind 'ctrl-u:half-page-up'
 "
 
-# aliases
+#
+# For Completions for BREW projects.
+# Required for zsh not installed via brew (i.e. macos)
+#
+fpath=($HOMEBREW_PREFIX/share/zsh/site-functions $fpath)
+autoload -U compinit
+compinit
+
+#
+# custom aliases file
+#
 source ~/.zsh_aliases
 
-# functions
+#
+# custom functions file
+#
 source ~/.zsh_functions
 fpath=(~/.config/zsh/functions $fpath)
 
@@ -57,7 +69,6 @@ alias git-remove-all-tags="zsh -c 'git tag -d \$(git tag -l) && git fetch && git
 #
 # VI KEYMAPPING
 #
-
 bindkey -M viins ';' vi-cmd-mode
 bindkey -M visual ';' vi-cmd-mode
 
@@ -85,6 +96,9 @@ function vi-yank-xclip {
 zle -N vi-yank-xclip
 bindkey -M vicmd 'y' vi-yank-xclip
 
+#
+# starship
+#
 eval "$(starship init zsh)"
 # fnm
 export PATH="/Users/jacklee/Library/Application Support/fnm:$PATH"
@@ -131,7 +145,6 @@ export PKG_CONFIG_PATH="/opt/homebrew/opt/postgresql@15/lib/pkgconfig"
 #
 # bun
 #
-# bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 # bun completions
